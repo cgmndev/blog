@@ -33,3 +33,14 @@ input:-webkit-autofill:focus {
 .katex-display {
   overflow: auto hidden;
 }
+
+
+
+:is(.dark .dark\:bg-gray-950) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(33 36 45) !important;
+}
+
+:is(.dark .dark\:bg-gray-900\/70) {
+  background-color: rgb(29 31 40) !important;
+}
