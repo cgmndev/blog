@@ -1,23 +1,23 @@
 /** @type {import("pliny/config").PlinyConfig } */
 const siteMetadata = {
-  title: 'Next.js Starter Blog',
-  author: 'Tails Azimuth',
-  headerTitle: 'TailwindBlog',
-  description: 'A blog created with Next.js and Tailwind.css',
-  language: 'en-us',
+  title: 'cgmn.dev',
+  author: 'Claudio Mardones',
+  headerTitle: 'cgmn.dev',
+  description: 'Blog de desarrollo y arquitectura de software',
+  language: 'es-cl',
   theme: 'system', // system, dark or light
-  siteUrl: 'https://tailwind-nextjs-starter-blog.vercel.app',
-  siteRepo: 'https://github.com/timlrx/tailwind-nextjs-starter-blog',
-  siteLogo: '/static/images/logo.png',
-  socialBanner: '/static/images/twitter-card.png',
+  siteUrl: 'https://cgmn.dev',
+  siteRepo: 'https://github.com/cgmndev/blog',
+  siteLogo: '/static/images/cgmn_logo.png',
+  socialBanner: '/static/images/cgmn_logo.png',
   mastodon: 'https://mastodon.social/@mastodonuser',
-  email: 'address@yoursite.com',
-  github: 'https://github.com',
-  twitter: 'https://twitter.com/Twitter',
+  email: 'claudio@cgmn.dev',
+  github: 'https://github.com/cgmndev',
+  twitter: 'https://twitter.com/cgmndev',
   facebook: 'https://facebook.com',
-  youtube: 'https://youtube.com',
-  linkedin: 'https://www.linkedin.com',
-  locale: 'en-US',
+  youtube: 'https://www.youtube.com/channel/UCh1Z57l6h4W0EdDA5ssNcwg',
+  linkedin: 'https://www.linkedin.com/in/claudio-mardones-3315b315/',
+  locale: 'es-CL',
   analytics: {
     // If you want to use an analytics provider you have to add it to the
     // content security policy in the `next.config.js` file.
