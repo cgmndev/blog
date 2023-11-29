@@ -16,7 +16,7 @@ const Header = () => {
               <Image
                 alt="Logo cgmn.dev"
                 src={`/static/images/cgmn_logo.png`}
-                className=" h-12 w-12 rounded-sm md:h-16 md:w-16 "
+                className=" h-10 w-10 rounded-sm md:h-14 md:w-14 "
                 width={48}
                 height={48}
               />
