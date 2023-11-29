@@ -19,14 +19,14 @@ services:
     image: gitlab/gitlab-ce:latest
     container_name: gitlab
     restart: always
-    hostname: ufro-test-gitlab.lazos.cl
+    hostname: HOSTNAME
     environment:
       GITLAB_OMNIBUS_CONFIG: |
-        external_url 'http://ufro-test-gitlab.lazos.cl'
+        external_url 'http://HOSTNAME'
         gitlab_rails['gitlab_shell_ssh_port'] = 2222
     ports:
       - "9500:80"
-      - "2222:22" # Puerto SSH personalizado
+      - "2222:22"
     volumes:
       - ./data/gitlab/config:/etc/gitlab
       - ./data/gitlab/logs:/var/log/gitlab

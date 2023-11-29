@@ -1,0 +1,135 @@
+---
+title: Comandos básicos de Git y ejemplo de trabajo con ramas
+date: '2023-11-29'
+tags: ['git']
+draft: false
+summary: Comandos básicos de Git y ejemplo de trabajo con ramas.
+images: []
+---
+
+### Repositorios
+    - Git es distribuido. Cada desarrollador tiene una copia completa del repositorio.
+    - Existen dos tipos de ubicación para los repositorios:
+        - **Locales**: En el equipo de desarrollo.
+        - **Remotos**: En un servidor remoto.
+### Ramas
+    - Por defecto existe una rama principal denominada main (también la podemos encontrar como master o trunk).
+    - Una práctica común es crear nuevas ramas para desarrollar nuevas funcionalidades. Cada vez que se crea una nueva rama, se crea una copia (lógica) de la rama de origen seleccionada.
+    - Las ramas se pueden integrar o fusionar (merge).
+### Operaciones básicas
+    - **Push**: Subir cambios a remoto.
+    - **Pull**: Traer cambios de remoto.
+    - **Clone**: Clonar un repositorio.
+    - **Merge**: Integrar ramas.
+    - **Add**: Agregar archivos al área de staging.
+    - **Commit**: Confirmar cambios.
+### Estados de los archivos en una rama:
+    - **Modified (modificado)**: Archivo modificado en el directorio de trabajo.
+    - **Staged (preparado)**: Archivo modificado añadido al área de staging.
+    - **Committed (confirmado)**: Archivo confirmado en el repositorio listo para ser enviado a remoto.
+### Configuración de Git en el equipo:
+    - `git --version`
+    - Utilizar siempre versiones actualizadas >2.3
+    - Configuración inicial:
+        - `git config --global user.name "<tu nombre>"`
+        - `git config --global user.email "<tu email>"`
+    - Ver mi configuración:
+        - `git config --list --show-scope`
+        ``
+    - Ver ayuda adicional de comandos:
+        - git COMANDO --help
+### Herramientas/Integraciones:
+    - Visual Studio Code Plugin
+    - Sourcetree
+### Trabajando con repositorios:
+    - Iniciar nuevo repositorio:
+        - `git init nuevo-proyecto`
+    - Clonar Proyecto
+        - git clone URL_REPOSITORIO
+    - Ver estado actual:
+        - `git status`
+        - Opción -s abreviado.
+    - Deshacer archivo modificado (con commit):
+        - `git restore index.html`
+    - Eliminar archivo creado recientemente sin agregar a Preparación o Confirmación.
+        - git clean -n (No ejecuta, previsualiza)
+        - git clean -f (borra)
+    - Añadir archivos al área de staging:
+        - git add .
+    - Sacar un archivo de staging:
+        - git reset NOMBRE_ARCHIVO
+    - Commit:
+        - Cada commit es una foto del repositorio actual (completo).
+        - `git commit -m "Add new search feature"`
+    - Deshacer último commit y mantener los cambios:
+        - git reset --soft HEAD~1
+    - Deshacer último commit y eliminar cambios:
+        - git reset --hard HEAD~1
+    - Agregar cambios al último commit (olvidados):
+        - git commit --amend -m "Message”
+        - Previamente añadir los archivos a staging.
+        - Agrega al último commit y no debe haberse enviado a remoto.
+    - Ignorar archivos:
+        - .gitignore
+        - [gitignore.io](http://gitignore.io/)
+    - Eliminar archivo en repositorio:
+        - Agregarlo a .gitignore o
+        - `git rm NOMBRE_ARCHIVO_O_DIRECTORIO`  (Se puede agregar opción -r para borrar recursivamente)
+        - `git rm --cached <nombre-de-archivo>`  (para mantener el archivo en directorio de trabajo).
+### Ramas
+    - Crear una rama
+        - `git branch mi-primera-rama`
+    - Cambiar a una rama
+        - `git switch mi-primera-rama`
+    - Crear y cambiar
+        - `git switch -c mi-primera-rama`
+    - Ver todas las ramas localmente:
+        - `git branch`
+        - El * indica que nos encontramos en esa rama.
+
+
+### Ejemplo de trabajo con ramas
+
+- Crear una nueva rama para desarrollar una nueva funcionalidad:
+
+```bash
+git switch -c historia_usuario_54321
+```
+
+- Realizamos modificaciones al código.
+- Realizamos commit a los cambios y subimos a remoto. Esto nos sirve para tener una copia de respaldo de nuestra rama en remoto o compartir cambios con otros desarrolladores.
+
+```bash
+git add .
+git commit -m "Se agrega nueva funcionalidad"
+git push origin historia_usuario_54321
+```
+
+- Como buena práctica, antes de hacer el merge con main, traemos los últimos cambios desde remoto.
+
+  ```bash
+  git switch main
+  git pull origin main
+  ```
+
+- Hacemos la fusión (merge) con main. Debemos asegurarnos que estamos en la rama destino (main)
+    - `git branch --show-current`
+- Fusionamos
+
+```bash
+git merge historia_usuario_54321
+```
+
+- En este último paso pueden aparecer conflictos los cuales se deben resolver antes de subir los cambios a remoto.
+- Finalmente se suben correctamente la rama main integrada hacia remoto.
+```bash
+git push origin main
+```
+
+- Eliminar rama localmente y en remoto.
+```bash
+git branch --delete historia_usuario_54321
+git push origin --delete historia_usuario_54321
+
+# git remote prune origin
+```
